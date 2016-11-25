@@ -6,50 +6,29 @@
 	name="viewport">
 <title>BuscaGlobal</title>
 <link href="css/seu-stylesheet.css" rel="stylesheet" />
-<script src="scripts/seu-script.js"></script>
-<link href="Estilo.css" rel="stylesheet" type="text/css" /> <!-- chamei o arquivo css /Matheus -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<link href="Estilo.css" rel="stylesheet" type="text/css" />
+<!-- chamei o arquivo css /Matheus -->
 </head>
 <body>
 	<form class="form-wrapper">
 		<input type="text" id="search" placeholder="Procurar" required>
 		<input type="submit" value="Pesquisar" id="submit">
 	</form>
-	<table border="1px" cellpadding="5px" cellspacing="0" align="center">
-		<tr>
-			<td><input type="checkbox" name="opcoes" value="html" /> <br />
-			
-			</td>
-			<td>FOTO GELADEIRA</td>
-			<td>DESCRIÇÃO GELADEIRA</td>
-		</tr>
-		<tr>
-			<td><input type="checkbox" name="opcoes" value="html" /> <br />
-			</td>
-			<td>FOTO GELADEIRA</td>
-			<td>DESCRIÇÃO GELADEIRA</td>
-		</tr>
-		<tr>
-			<td><input type="checkbox" name="opcoes" value="html" /> <br />
-			</td>
-			<td>FOTO GELADEIRA</td>
-			<td>DESCRIÇÃO GELADEIRA</td>
-		</tr>
-		<tr>
-			<td><input type="checkbox" name="opcoes" value="html" /> <br />
-			</td>
-			<td>FOTO GELADEIRA</td>
-			<td>DESCRIÇÃO GELADEIRA</td>
-		</tr>
 
+	<table id="teste" border="1px" cellpadding="5px" cellspacing="0"
+		align="center">
 
 	</table>
-	<p></p>
 
 	<div class="content"></div>
 	<div class="footer">
 		<a href="url">Lojista</a>
 
 	</div>
+
 
 	<script
 		src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"
@@ -61,19 +40,43 @@
 			});
 		});
 		function aviso() {
-			
+
 		}
 	</script>
-	
+
 	<script>
-	var x = document.createElement("INPUT");
-	x.setAttribute("type", "checkbox");
+		var x = document.createElement("INPUT");
+		x.setAttribute("type", "checkbox");
 	</script>
 	<p>
-		<input type="button" value="Comparar" />		
+		<input type="button" value="Comparar" />
 	</p>
 	<div id="conteudo"></div>
-	<a href="#" class="close">Fechar [X]</a><br /><br><br /></div>
+	<a href="#" class="close">Fechar [X]</a>
+	<br />
+	<br>
+	<br />
+	</div>
+
+	<script>
+		$(document).ready(
+				function() {
+					$.getJSON("http://192.168.17.129:8080/app/geladeira",
+							function(data) {
+								$.each(data, function(key, val) {
+									var row = '<tr><td>' + val.brand
+											+ '</td><td>' + val.model
+											+ '</td></tr>';
+									$('#teste').append(row);
+								});
+							});
+				});
+	</script>
+
 
 </body>
+
+
+
 </html>
+
